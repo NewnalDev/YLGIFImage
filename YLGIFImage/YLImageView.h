@@ -10,6 +10,7 @@
 
 @interface YLImageView : UIImageView
 
+@property (nonatomic) BOOL autoPlay;
 @property (nonatomic, copy) NSString *runLoopMode;
 
 @end

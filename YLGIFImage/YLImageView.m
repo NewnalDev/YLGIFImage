@@ -32,6 +32,7 @@ const NSTimeInterval kMaxTimeStep = 1; // note: To avoid spiral-o-death
 {
     self = [super init];
     if (self) {
+        self.autoPlay = YES;
         self.currentFrameIndex = 0;
     }
     return self;
@@ -91,7 +92,12 @@ const NSTimeInterval kMaxTimeStep = 1; // note: To avoid spiral-o-death
         self.currentFrame = nil;
         self.animatedImage = (YLGIFImage *)image;
         self.loopCountdown = self.animatedImage.loopCount ?: NSUIntegerMax;
-        [self startAnimating];
+        
+        if (self.autoPlay) {
+            [self startAnimating];
+        } else {
+            [self stopAnimating];
+        }
     } else {
         self.animatedImage = nil;
         [super setImage:image];
